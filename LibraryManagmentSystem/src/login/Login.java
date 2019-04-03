@@ -1,16 +1,20 @@
 package login;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.JButton;
 import java.awt.Color;
+
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Login extends JFrame {
 
@@ -66,18 +70,25 @@ public class Login extends JFrame {
 		textField_1.setColumns(10);
 		
 		JButton btnLogin = new JButton("Login");
+		btnLogin.setIcon(new ImageIcon(Login.class.getResource("/login/icons/iconfinder_Tick_132261.png")));
 		btnLogin.setFont(new Font("Verdana", Font.BOLD, 12));
-		btnLogin.setBounds(100, 173, 89, 23);
+		btnLogin.setBounds(73, 173, 104, 23);
 		contentPane.add(btnLogin);
 		
 		JButton btnSignup = new JButton("Signup");
+		btnSignup.setIcon(new ImageIcon(Login.class.getResource("/login/icons/iconfinder_Right_132313.png")));
 		btnSignup.setFont(new Font("Verdana", Font.BOLD, 12));
-		btnSignup.setBounds(246, 173, 89, 23);
+		btnSignup.setBounds(246, 173, 116, 23);
 		contentPane.add(btnSignup);
 		
 		JButton btnNewButton_2 = new JButton("Forgot password?");
+		btnNewButton_2.setIcon(null);
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btnNewButton_2.setFont(new Font("Verdana", Font.BOLD, 12));
-		btnNewButton_2.setBounds(245, 216, 157, 23);
+		btnNewButton_2.setBounds(246, 215, 157, 22);
 		contentPane.add(btnNewButton_2);
 		
 		JLabel lblForgotPassword = new JLabel("Trouble login...");
@@ -85,5 +96,16 @@ public class Login extends JFrame {
 		lblForgotPassword.setFont(new Font("Verdana", Font.BOLD, 12));
 		lblForgotPassword.setBounds(46, 217, 129, 19);
 		contentPane.add(lblForgotPassword);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/login/icons/iconfinder_Lock_132279.png")));
+		lblNewLabel.setBounds(356, 63, 30, 19);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("New label");
+		lblNewLabel_1.setIcon(new ImageIcon(Login.class.getResource("/login/icons/iconfinder_Key_132286.png")));
+		lblNewLabel_1.setBounds(358, 122, 30, 23);
+		contentPane.add(lblNewLabel_1);
+		
 	}
 }
