@@ -95,7 +95,7 @@ public class Login extends JFrame {
 		contentPaneLogin.add(btnNewButton_2);
 		
 		JLabel lblForgotPassword = new JLabel("Trouble login...");
-		lblForgotPassword.setForeground(Color.RED);
+		lblForgotPassword.setForeground(new Color(255, 0, 51));
 		lblForgotPassword.setFont(new Font("Verdana", Font.BOLD, 12));
 		lblForgotPassword.setBounds(46, 217, 129, 19);
 		contentPaneLogin.add(lblForgotPassword);
