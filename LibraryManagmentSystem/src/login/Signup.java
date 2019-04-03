@@ -12,6 +12,10 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
+import javax.swing.border.TitledBorder;
+import java.awt.Color;
+import java.awt.Dialog.ModalExclusionType;
+import javax.swing.DefaultComboBoxModel;
 
 public class Signup extends JFrame {
 
@@ -41,8 +45,9 @@ public class Signup extends JFrame {
 	 * Create the frame.
 	 */
 	public Signup() {
+		setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 459, 336);
+		setBounds(100, 100, 459, 356);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -89,7 +94,8 @@ public class Signup extends JFrame {
 		textField_2.setColumns(10);
 		
 		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(199, 164, 117, 22);
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"What is your mother tounge?", "What is your teacher`s name?", "What is your nick name?", "What is your childhood riend name?"}));
+		comboBox.setBounds(199, 164, 186, 22);
 		contentPane.add(comboBox);
 		
 		textField_3 = new JTextField();
@@ -106,5 +112,10 @@ public class Signup extends JFrame {
 		btnNewButton_1.setIcon(new ImageIcon(Signup.class.getResource("/login/icons/iconfinder_Back_132600.png")));
 		btnNewButton_1.setBounds(245, 264, 89, 23);
 		contentPane.add(btnNewButton_1);
+		
+		JPanel panel = new JPanel();
+		panel.setBorder(new TitledBorder(null, "Signup", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 204, 51)));
+		panel.setBounds(10, 21, 412, 286);
+		contentPane.add(panel);
 	}
 }
