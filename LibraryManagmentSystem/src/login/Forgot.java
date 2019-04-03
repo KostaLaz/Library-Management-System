@@ -11,6 +11,8 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
+import javax.swing.border.TitledBorder;
+import java.awt.Color;
 
 public class Forgot extends JFrame {
 
@@ -42,7 +44,7 @@ public class Forgot extends JFrame {
 	 */
 	public Forgot() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 467, 362);
+		setBounds(100, 100, 478, 362);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -112,5 +114,10 @@ public class Forgot extends JFrame {
 		btnNewButton_4.setIcon(new ImageIcon(Forgot.class.getResource("/login/icons/iconfinder_Back_132600.png")));
 		btnNewButton_4.setBounds(352, 210, 89, 23);
 		contentPane.add(btnNewButton_4);
+		
+		JPanel panel = new JPanel();
+		panel.setBorder(new TitledBorder(null, "Forgot Password", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(204, 0, 0)));
+		panel.setBounds(10, 11, 441, 262);
+		contentPane.add(panel);
 	}
 }
