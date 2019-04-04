@@ -105,12 +105,12 @@ public class Signup extends JFrame {
 		
 		JButton btnNewButton = new JButton("Create");
 		btnNewButton.setIcon(new ImageIcon(Signup.class.getResource("/login/icons/iconfinder_Upload_132671.png")));
-		btnNewButton.setBounds(91, 264, 89, 23);
+		btnNewButton.setBounds(91, 264, 102, 23);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Back");
 		btnNewButton_1.setIcon(new ImageIcon(Signup.class.getResource("/login/icons/iconfinder_Back_132600.png")));
-		btnNewButton_1.setBounds(245, 264, 89, 23);
+		btnNewButton_1.setBounds(245, 264, 102, 23);
 		contentPane.add(btnNewButton_1);
 		
 		JPanel panel = new JPanel();
