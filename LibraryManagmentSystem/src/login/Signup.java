@@ -13,12 +13,15 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import java.sql.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Signup extends JFrame {
 	
@@ -53,6 +56,10 @@ public class Signup extends JFrame {
 	 * Create the frame.
 	 */
 	public Signup() {
+		
+		super("Login");
+		conn = JavaConnect.ConectDB();
+		
 		setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 459, 356);
@@ -60,16 +67,6 @@ public class Signup extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		JLabel lblNewLabel = new JLabel("Name");
-		lblNewLabel.setFont(new Font("Verdana", Font.BOLD, 12));
-		lblNewLabel.setBounds(31, 40, 79, 19);
-		contentPane.add(lblNewLabel);
-		
-		JLabel lblNewLabel_1 = new JLabel("Username");
-		lblNewLabel_1.setFont(new Font("Verdana", Font.BOLD, 12));
-		lblNewLabel_1.setBounds(31, 81, 79, 19);
-		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Your Security Question");
 		lblNewLabel_2.setFont(new Font("Verdana", Font.BOLD, 11));
@@ -112,11 +109,38 @@ public class Signup extends JFrame {
 		textField_3.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Create");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					String sql = "Insert into accout (username, name, password, secret_q, answer) values(?, ?, ?, ?, ?)";
+					pst = conn.prepareStatement(sql);
+					pst.setString(1, textField.getText());
+					pst.setString(2, textField_1.getText());
+					pst.setString(3, textField_2.getText());
+					pst.setString(4, (String) comboBox.getSelectedItem());
+					pst.setString(5, textField_3.getText());
+					pst.execute();
+					JOptionPane.showMessageDialog(null, "New Account created");
+					rs.close();
+					pst.close();
+
+				}catch(Exception e) {
+					JOptionPane.showMessageDialog(null, e);
+				}
+			}
+		});
 		btnNewButton.setIcon(new ImageIcon(Signup.class.getResource("/login/icons/iconfinder_Upload_132671.png")));
 		btnNewButton.setBounds(91, 264, 102, 23);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Back");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				setVisible(false);
+				Login ob = new Login();
+				ob.setVisible(true);
+			}
+		});
 		btnNewButton_1.setIcon(new ImageIcon(Signup.class.getResource("/login/icons/iconfinder_Back_132600.png")));
 		btnNewButton_1.setBounds(245, 264, 102, 23);
 		contentPane.add(btnNewButton_1);
@@ -125,5 +149,16 @@ public class Signup extends JFrame {
 		panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "New Account", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 204, 51)));
      	panel.setBounds(10, 21, 412, 286);
 		contentPane.add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblNewLabel_1 = new JLabel("Username");
+		lblNewLabel_1.setBounds(28, 23, 79, 19);
+		panel.add(lblNewLabel_1);
+		lblNewLabel_1.setFont(new Font("Verdana", Font.BOLD, 12));
+		
+		JLabel lblNewLabel = new JLabel("Name");
+		lblNewLabel.setBounds(28, 61, 79, 19);
+		panel.add(lblNewLabel);
+		lblNewLabel.setFont(new Font("Verdana", Font.BOLD, 12));
 	}
 }
