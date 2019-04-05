@@ -1,23 +1,31 @@
 package login;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.JComboBox;
-import javax.swing.JButton;
-import javax.swing.ImageIcon;
-import javax.swing.border.TitledBorder;
 import java.awt.Color;
 import java.awt.Dialog.ModalExclusionType;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.TitledBorder;
+import java.sql.*;
 
 public class Signup extends JFrame {
+	
+	Connection conn;
+	ResultSet rs;
+	PreparedStatement pst;
+	
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -114,8 +122,8 @@ public class Signup extends JFrame {
 		contentPane.add(btnNewButton_1);
 		
 		JPanel panel = new JPanel();
-		panel.setBorder(new TitledBorder(null, "Signup", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 204, 51)));
-		panel.setBounds(10, 21, 412, 286);
+		panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "New Account", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 204, 51)));
+     	panel.setBounds(10, 21, 412, 286);
 		contentPane.add(panel);
 	}
 }
