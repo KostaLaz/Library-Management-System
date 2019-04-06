@@ -14,12 +14,20 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.awt.event.ActionEvent;
 import javax.swing.border.TitledBorder;
 import javax.swing.border.EtchedBorder;
 import javax.swing.UIManager;
 
 public class Login extends JFrame {
+	
+	Connection conn;
+	ResultSet rs;
+	PreparedStatement pst;
+	
 
 	private JPanel contentPaneLogin;
 	private JTextField textField;
@@ -45,6 +53,10 @@ public class Login extends JFrame {
 	 * Create the frame.
 	 */
 	public Login() {
+		
+		super("Login");
+		conn = JavaConnect.ConectDB();
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPaneLogin = new JPanel();
@@ -79,6 +91,13 @@ public class Login extends JFrame {
 		contentPaneLogin.add(btnLogin);
 		
 		JButton btnSignup = new JButton("Signup");
+		btnSignup.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				setVisible(false);
+				Signup ob = new Signup();
+				ob.setVisible(true);
+				}
+		});
 		btnSignup.setIcon(new ImageIcon(Login.class.getResource("/login/icons/iconfinder_Right_132313.png")));
 		btnSignup.setFont(new Font("Verdana", Font.BOLD, 12));
 		btnSignup.setBounds(246, 173, 116, 23);

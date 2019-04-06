@@ -8,6 +8,10 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
@@ -15,6 +19,11 @@ import javax.swing.border.TitledBorder;
 import java.awt.Color;
 
 public class Forgot extends JFrame {
+	
+	Connection conn;
+	ResultSet rs;
+	PreparedStatement pst;
+	
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -43,6 +52,10 @@ public class Forgot extends JFrame {
 	 * Create the frame.
 	 */
 	public Forgot() {
+		
+		super("Forgot Password");
+		conn = JavaConnect.ConectDB();
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 478, 362);
 		contentPane = new JPanel();
