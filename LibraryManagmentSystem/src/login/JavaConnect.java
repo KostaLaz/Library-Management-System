@@ -11,7 +11,7 @@ public class JavaConnect {
 	public static Connection ConectDB() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/LibraryNew", "root", "");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/library_new", "root", "");
 			return conn;
 		}
 		catch(Exception e){
